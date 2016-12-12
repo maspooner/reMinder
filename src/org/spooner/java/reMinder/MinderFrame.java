@@ -2,7 +2,6 @@ package org.spooner.java.reMinder;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -73,7 +72,7 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 	private final void showDialog(String text, String name){
 		String message="Event: "+name+" has ended.          Message:   "+text;
 		if(MinderOptions.doBeep)
-			Toolkit.getDefaultToolkit().beep();
+			Minder.beep();
 //		JOptionPane.showMessageDialog(this, message, "Event Done", JOptionPane.WARNING_MESSAGE, null); TODO reimplement?
 		MinderTray.showMessage(message);
 	}

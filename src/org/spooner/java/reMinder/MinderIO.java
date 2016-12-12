@@ -1,11 +1,15 @@
 package org.spooner.java.reMinder;
 
 import java.awt.Image;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class MinderIO implements Runnable{
 	//static members
@@ -121,7 +125,6 @@ public class MinderIO implements Runnable{
 		//options
 		sb.append(getOptionsData());
 		
-		System.out.println(sb.toString());
 		writeFile(sb.toString());
 	}
 	
@@ -176,6 +179,23 @@ public class MinderIO implements Runnable{
 			System.exit(4);
 		}
 		return i;
+	}
+	
+	public final Clip getClip(String fileName){
+		Clip c=null;
+		try{
+			//FIXME editing
+			AudioInputStream ais=AudioSystem.getAudioInputStream
+				(new BufferedInputStream(ClassLoader.class.getResourceAsStream("/"+fileName)));
+//			AudioInputStream ais=AudioSystem.getAudioInputStream(new File(fileName));
+			c=AudioSystem.getClip();
+			c.open(ais);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return c;
 	}
 	
 	@Override

@@ -4,11 +4,13 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.sound.sampled.Clip;
+
 /*
  * reMinder
  * Made by Matt Spooner
  * 
- * Last Modified:Nov 24, 2013
+ * Last Modified:Nov 30, 2013
  * Date Started:Sep 19, 2013
  * 
  * Programming Concepts Applied For the First Time:
@@ -18,6 +20,7 @@ import java.util.Collections;
  *   system tray
  *   
  * Error codes:
+ * 1 - clip error
  * 2 - create file error
  * 3 - write to file error
  * 4 - read image error
@@ -29,19 +32,18 @@ import java.util.Collections;
  * 
  * TODO:
  * remove .* imports
- * fix those warnings
  * ability to adjust beep interval/number
  * packages?
  * new data type: DueDate: set with a specific day/month/year
  * optimize updating (don't need to update some components unless edited)
  * get rid of shouldUpdate
- * sort events!
  */
 public abstract class Minder {
 	//static members
 	private static ArrayList<TimedEvent> events=new ArrayList<TimedEvent>();
 	private static MinderFrame frame;
 	private static MinderIO io;
+	private static Clip bing;
 	protected static volatile boolean shouldUpdate=false;
 	
 	private static Thread checkTime=new Thread(new Runnable(){
@@ -63,20 +65,9 @@ public abstract class Minder {
 	
 	//static methods
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		String runType=args[0];
-//		try{
-//			//TODO
-//			if(isGUIEnabled(runType)){
-//				System.out.println("GUI enabled");
-//			}
-//		}
-//		catch(Exception e){
-//			System.err.println("Invalid command line arguments!");
-//			System.exit(6);
-//		}
 		frame=new MinderFrame();
 		io=new MinderIO();
+		bing=io.getClip("bing.wav");
 		TimedEvent[] readEvents=io.read();
 		initEvents(readEvents);
 		new MinderTray();
@@ -120,5 +111,9 @@ public abstract class Minder {
 		boolean enabled=true;
 		if(frame.isVisible()) enabled=false;
 		frame.setVisible(enabled);
+	}
+	public static final void beep(){
+		bing.start();
+		bing.setFramePosition(0);
 	}
 }
