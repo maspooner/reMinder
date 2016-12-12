@@ -1,5 +1,6 @@
 package org.spooner.java.reMinder;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -7,20 +8,23 @@ import java.util.Collections;
  * reMinder
  * Made by Matt Spooner
  * 
- * Last Modified:Nov 7, 2013
+ * Last Modified:Nov 24, 2013
  * Date Started:Sep 19, 2013
  * 
  * Programming Concepts Applied For the First Time:
  *   inheritance
  *   working with milliseconds
  *   multi-threading
+ *   system tray
  *   
  * Error codes:
  * 2 - create file error
  * 3 - write to file error
+ * 4 - read image error
  * 5 - parse time error
  * 6 - argument error
  * 7 - read from file error
+ * 8 - add to tray error
  * 11 - build events from read data error
  * 
  * TODO:
@@ -106,5 +110,8 @@ public abstract class Minder {
 		TimedEvent[] tes=new TimedEvent[events.size()];
 		events.toArray(tes);
 		io.write(tes);
+	}
+	public static final Image getImage(String fileName){
+		return io.readImage(fileName);
 	}
 }

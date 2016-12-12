@@ -1,8 +1,11 @@
 package org.spooner.java.reMinder;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import javax.imageio.ImageIO;
 
 public class MinderIO implements Runnable{
 	//static members
@@ -161,6 +164,19 @@ public class MinderIO implements Runnable{
 		return new String(data);
 	}
 
+	public final Image readImage(String fileName){
+		Image i=null;
+		try{
+			//FIXME change to new File(fileName) when editing
+			i=ImageIO.read(ClassLoader.class.getResourceAsStream("/"+fileName));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			System.exit(4);
+		}
+		return i;
+	}
+	
 	@Override
 	public void run() {
 		while(true){
