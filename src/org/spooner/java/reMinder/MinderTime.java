@@ -3,6 +3,7 @@ package org.spooner.java.reMinder;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public abstract class MinderTime {
 	//this class converts between time
@@ -26,6 +27,7 @@ public abstract class MinderTime {
 	}
 	
 	public static final int getTimeFromString(String time){
+		//for reminder event
 		if(time.equals("weeks")) return 604800000;
 		else if(time.equals("days")) return 86400000;
 		else if(time.equals("hours")) return 3600000;
@@ -66,6 +68,7 @@ public abstract class MinderTime {
 	}
 	
 	public static final long timeToMillis(String time){
+		//for alarm event
 		try {
 			Calendar hourMinute=Calendar.getInstance();
 			Calendar correct=Calendar.getInstance();
@@ -109,5 +112,28 @@ public abstract class MinderTime {
 	public static final String getSecondString(int millis){
 		float secs=((float)millis)/1000f;
 		return secs+" seconds";
+	}
+	private static final boolean isDST(){
+		//TODO works in fall?
+		//finds if the current date is in DST
+//		return TimeZone.getDefault().inDaylightTime(new Date());
+		System.out.println(MinderOptions.wasDST);
+		return false;
+	}
+	public static final int getDSTAllignment(){
+		//TODO fear of negatives? / implement
+		boolean isDST=isDST();
+		//was not but now is DST, return 1 hour
+		if(!MinderOptions.wasDST && isDST)
+			return 3600000;
+		//was but now isn't DST, return -1 hour
+		if(MinderOptions.wasDST && !isDST)
+			return -3600000;
+		//else, no adjustment
+		return 0;
+	}
+	public static final void setPastDST(){
+		// TODO Auto-generated method stub
+		MinderOptions.wasDST=isDST();
 	}
 }

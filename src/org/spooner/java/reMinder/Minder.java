@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
  * reMinder
  * Made by Matt Spooner
  * 
- * Last Modified:Dec 14, 2013
+ * Last Modified:Mar 21, 2014
  * Date Started:Sep 19, 2013
  * 
  * Programming Concepts Applied For the First Time:
@@ -35,6 +35,10 @@ import javax.sound.sampled.Clip;
  * new data type: DueDate: set with a specific day/month/year
  * optimize updating (don't need to update some components unless edited)
  * get rid of shouldUpdate
+ * factor in DST (EST VS EDT?)
+ * add queue for system tray notifications
+ * days round down too soon
+ * When reminder goes off when computer not on, timing gets messed up
  */
 public abstract class Minder {
 	//static members
@@ -54,6 +58,8 @@ public abstract class Minder {
 					for (TimedEvent te : events){
 						te.checkEnded();
 					}
+					//TODO cleanup DST stuff
+					MinderTime.setPastDST();
 				}catch(Exception e){
 					e.printStackTrace();
 					return;

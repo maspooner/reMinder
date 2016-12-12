@@ -14,7 +14,7 @@ public abstract class MinderConstants {
 	protected static final String VERSION="v1.2.2";
 	protected static final String NAME="reMinder "+VERSION;
 	protected static final String ABOUT=NAME+"\nMade by Matt Spooner" +
-			"\nLast Modified:Dec 14, 2013\nDate Started:Sep 19, 2013" +
+			"\nLast Modified:Mar 21, 2014\nDate Started:Sep 19, 2013" +
 			"\nAbout this project:\nSince the majority of programs I made up until this point were games," +
 			"\nI decided I wanted to create a utility. I decided to make an app that kept track of what I" +
 			"\nneeded to do and remind me about it. I had downloaded a todo app before, but it was too complex" +

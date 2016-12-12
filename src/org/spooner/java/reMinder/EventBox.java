@@ -12,30 +12,26 @@ import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial")
 public abstract class EventBox extends JPanel implements MouseListener{
-	private static int num=0;//TODO bug later?
-	
 	//members
 	private JLabel nameLabel;
 	private JLabel descLabel;
 	private EventPopupMenu popup;
 	
 	//constructors
-	public EventBox(TimedEvent te){
+	public EventBox(TimedEvent te, boolean isGray){
 		nameLabel=new JLabel(getShortenedName(te.getName()));
 		descLabel=new JLabel(getShortenedDesc(te.getDesc()));
 		popup=new EventPopupMenu(getShortenedName(te.getName()));
 		nameLabel.setFont(MinderConstants.NAME_FONT);
 		descLabel.setFont(MinderConstants.DESC_FONT);
 		addMouseListener(this);
-		setBackground(num%2==0 ? Color.LIGHT_GRAY : Color.WHITE);//TODO change?
+		setBackground(isGray ? Color.LIGHT_GRAY : Color.WHITE);
 		
 		String typeString=this.getClass().getSimpleName().replaceFirst("Box", "")+" Event";
 		setBorder(BorderFactory.createTitledBorder(MinderConstants.LINE_BORDER, 
 				typeString, TitledBorder.LEFT, TitledBorder.CENTER, 
 				MinderConstants.DESC_FONT, Color.MAGENTA));
 		setLayout(new GridBagLayout());
-		
-		num++;
 	}
 	
 	//methods

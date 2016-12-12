@@ -12,8 +12,8 @@ public class ReminderBox extends AlarmBox{
 	private Reminder reminder;
 	
 	//constructors
-	public ReminderBox(Reminder r) {
-		super(r);
+	public ReminderBox(Reminder r, boolean isGray) {
+		super(r, isGray);
 		reminder=r;
 		intervalLabel=new JLabel("Reminds every "+r.getStringInterval());
 		intervalLabel.setFont(MinderConstants.MISC_FONT);

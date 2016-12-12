@@ -21,7 +21,6 @@ public class MinderBar extends JMenuBar implements ActionListener{
 	public final String getActionCommand() {return this.actionCommand;}
 	public final void deleteCommand(){this.actionCommand="";}
 	private final void initMenus(){
-		//TODO
 		JMenu menu=new JMenu("File");
 		//file menu
 		menu.add(getNewMenuItem("Save"));
@@ -36,7 +35,7 @@ public class MinderBar extends JMenuBar implements ActionListener{
 		menu.add(getNewMenuItem("Reminder..."));
 		add(menu);
 		//sort menu
-		menu=new JMenu("Sort");
+		menu=new JMenu("Sorting");
 		menu.add(getNewMenuItem("Sort"));
 		add(menu);
 	}

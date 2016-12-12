@@ -57,20 +57,23 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 	}
 	
 	private final void addAllEvents(ArrayList<TimedEvent> tes){
+		boolean isGray=false;
 		eventPanel.removeAll();
-		for(TimedEvent te : tes)
-			addEvent(te);
+		for(TimedEvent te : tes){
+			addEvent(te, isGray);
+			isGray=!isGray;
+		}
 	}
 	
-	private final void addEvent(TimedEvent te){
+	private final void addEvent(TimedEvent te, boolean isGray){
 		if(te instanceof Todo){
-			eventPanel.add(new TodoBox((Todo) te));
+			eventPanel.add(new TodoBox((Todo) te, isGray));
 		}
 		else if(te instanceof Reminder){
-			eventPanel.add(new ReminderBox((Reminder) te));
+			eventPanel.add(new ReminderBox((Reminder) te, isGray));
 		}
 		else if(te instanceof Alarm){
-			eventPanel.add(new AlarmBox((Alarm) te));
+			eventPanel.add(new AlarmBox((Alarm) te, isGray));
 		}
 	}
 	
@@ -78,7 +81,6 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 		String message="Event: "+name+" has ended.          Message:   "+text;
 		if(MinderOptions.doBeep)
 			Minder.beep();
-//		JOptionPane.showMessageDialog(this, message, "Event Done", JOptionPane.WARNING_MESSAGE, null); TODO reimplement?
 		MinderTray.showMessage(message);
 	}
 	private void setJMenuBar(MinderBar mb) {

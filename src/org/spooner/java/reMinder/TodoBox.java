@@ -21,8 +21,8 @@ public class TodoBox extends EventBox{
 	private Todo todo;
 	
 	//constructors
-	public TodoBox(Todo t) {
-		super(t);
+	public TodoBox(Todo t, boolean isGray) {
+		super(t, isGray);
 		todo=t;
 		coloredBox=new ColoredBox(t.getColor());
 		priorityLabel=new JLabel("Priority: "+t.getPriority());

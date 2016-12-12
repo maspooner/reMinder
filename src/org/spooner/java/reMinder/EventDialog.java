@@ -16,7 +16,6 @@ import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial")
 public abstract class EventDialog extends JDialog implements ActionListener{
-	//TODO adjust fonts as nessessary (ie create new, switch to others etc)
 	//members
 	private JLabel titleLabel;
 	private JTextField nameField;

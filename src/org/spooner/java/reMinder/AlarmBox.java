@@ -13,8 +13,8 @@ public class AlarmBox extends EventBox {
 	private JLabel timeRemainingLabel;
 	
 	//constuctors
-	public AlarmBox(Alarm a) {
-		super(a);
+	public AlarmBox(Alarm a, boolean isGray) {
+		super(a, isGray);
 		alarm=a;
 		timeEndLabel=new JLabel("Ends: "+MinderTime.getDateString(a.getTimeEnd()));
 		timeRemainingLabel=new JLabel("Remaining: "+a.getTimeRemainingString());
@@ -47,6 +47,7 @@ public class AlarmBox extends EventBox {
 		c.gridy=2;
 		add(timeEndLabel, c);
 		c.gridx=1;
+		c.anchor=GridBagConstraints.EAST;
 		add(timeRemainingLabel, c);
 	}
 

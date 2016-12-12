@@ -45,6 +45,8 @@ public class Alarm extends TimedEvent{
 		while(timeEnd<System.currentTimeMillis()){
 			timeEnd+=86400000;
 		}
+		//DST alignment TODO test
+		timeEnd+=MinderTime.getDSTAllignment();
 		setIsEnded(false);
 	}
 	@Override

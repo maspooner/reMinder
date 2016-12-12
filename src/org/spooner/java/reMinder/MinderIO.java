@@ -171,8 +171,8 @@ public class MinderIO implements Runnable{
 		Image i=null;
 		try{
 			//FIXME change  when editing
-//			i=ImageIO.read(new File(fileName));
-			i=ImageIO.read(ClassLoader.class.getResourceAsStream("/"+fileName));
+			i=ImageIO.read(new File(fileName));
+//			i=ImageIO.read(ClassLoader.class.getResourceAsStream("/"+fileName));
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -185,9 +185,9 @@ public class MinderIO implements Runnable{
 		Clip c=null;
 		try{
 			//FIXME editing
-			AudioInputStream ais=AudioSystem.getAudioInputStream
-				(new BufferedInputStream(ClassLoader.class.getResourceAsStream("/"+fileName)));
-//			AudioInputStream ais=AudioSystem.getAudioInputStream(new File(fileName));
+//			AudioInputStream ais=AudioSystem.getAudioInputStream
+//				(new BufferedInputStream(ClassLoader.class.getResourceAsStream("/"+fileName)));
+			AudioInputStream ais=AudioSystem.getAudioInputStream(new File(fileName));
 			c=AudioSystem.getClip();
 			c.open(ais);
 		}

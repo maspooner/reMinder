@@ -37,7 +37,6 @@ public class OptionsDialog extends JDialog implements ActionListener{
 	}
 	//methods
 	private void addComponents(){
-		//TODO
 		beepBox=new JCheckBox("Beep upon event end", MinderOptions.doBeep);
 		autosaveBox=new JCheckBox("Autosave?", MinderOptions.doAutosave);
 		saveIntervalSlider=setupSlider(MinderConstants.MAX_SAVE_INTERVAL, MinderConstants.MIN_SAVE_INTERVAL,

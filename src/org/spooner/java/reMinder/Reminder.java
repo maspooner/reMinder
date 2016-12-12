@@ -26,7 +26,8 @@ public class Reminder extends Alarm{
 	}
 	@Override
 	protected void recalculate(){
-		setTimeEnd(System.currentTimeMillis()+interval);
+		//TODO test
+		setTimeEnd(System.currentTimeMillis()+interval+MinderTime.getDSTAllignment());
 		setIsEnded(false);
 	}
 	
