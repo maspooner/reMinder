@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class SortDialog extends JDialog implements ActionListener{
@@ -59,13 +60,14 @@ public class SortDialog extends JDialog implements ActionListener{
 		c.gridx=0;
 		c.gridy=0;
 		c.weightx=0.1;
-		c.weighty=0.2;
+		c.weighty=0.8;
 		c.fill=GridBagConstraints.BOTH;
 		c.gridwidth=4;
-		add(eventList, c);
+		add(new JScrollPane(eventList), c);
 		c.fill=GridBagConstraints.NONE;
 		c.gridy=1;
 		c.gridwidth=1;
+		c.weighty=0.2;
 		add(toTopButton, c);
 		c.gridx=1;
 		add(toBottomButton, c);

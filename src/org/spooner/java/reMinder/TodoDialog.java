@@ -53,6 +53,7 @@ public class TodoDialog extends EventDialog{
 		String name, desc, color, priority;
 		name=getNameField().getText();
 		desc=getDescField().getText();
+		if(desc.isEmpty()) desc="No desc.";
 		color=colorCombo.getSelectedItem().toString();
 		priority=priorityCombo.getSelectedItem().toString();
 		return new Todo(name, desc, Todo.stringToColor(color), 

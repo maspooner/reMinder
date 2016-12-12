@@ -2,7 +2,7 @@ package org.spooner.java.reMinder;
 
 import java.awt.GridBagConstraints;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class AlarmBox extends EventBox {

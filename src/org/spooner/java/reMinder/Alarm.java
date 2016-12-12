@@ -60,6 +60,7 @@ public class Alarm extends TimedEvent{
 	}
 	@Override
 	protected void checkEnded() {
+		//if already ended
 		if(isEnded() && !isRepeated)
 			return;
 		if(timeEnd<=System.currentTimeMillis())

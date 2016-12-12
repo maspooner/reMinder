@@ -6,7 +6,12 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class MinderFrame extends JFrame implements Runnable, WindowListener{

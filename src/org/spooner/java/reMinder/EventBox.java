@@ -5,7 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial")

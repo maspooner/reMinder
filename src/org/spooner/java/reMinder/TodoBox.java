@@ -6,7 +6,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 
 @SuppressWarnings("serial")

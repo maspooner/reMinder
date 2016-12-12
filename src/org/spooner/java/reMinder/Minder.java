@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
  * reMinder
  * Made by Matt Spooner
  * 
- * Last Modified:Nov 30, 2013
+ * Last Modified:Dec 14, 2013
  * Date Started:Sep 19, 2013
  * 
  * Programming Concepts Applied For the First Time:
@@ -31,9 +31,7 @@ import javax.sound.sampled.Clip;
  * 11 - build events from read data error
  * 
  * TODO:
- * remove .* imports
- * ability to adjust beep interval/number
- * packages?
+ * ability to adjust beep sound
  * new data type: DueDate: set with a specific day/month/year
  * optimize updating (don't need to update some components unless edited)
  * get rid of shouldUpdate
@@ -51,7 +49,8 @@ public abstract class Minder {
 		public void run() {
 			while(true){
 				try{
-					Thread.sleep(MinderConstants.EVENT_CHECK_INERVAL);
+					//delay added so that message has time to appear before event ended is switched to false
+					Thread.sleep(MinderOptions.updateInterval+200);
 					for (TimedEvent te : events){
 						te.checkEnded();
 					}
@@ -113,7 +112,13 @@ public abstract class Minder {
 		frame.setVisible(enabled);
 	}
 	public static final void beep(){
-		bing.start();
 		bing.setFramePosition(0);
+		try {
+			//give time for frame reset
+			Thread.sleep(200);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		bing.start();
 	}
 }

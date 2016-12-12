@@ -11,10 +11,15 @@ import javax.swing.border.EtchedBorder;
 public abstract class MinderConstants {
 	//contains all constants
 	//static members
-	protected static final String VERSION="v1.2.1";
+	protected static final String VERSION="v1.2.2";
 	protected static final String NAME="reMinder "+VERSION;
-	protected static final String ABOUT=NAME+"\nMade by Matt Spooner\nLast Modified:Nov 30, 2013\nDate Started:Sep 19, 2013";//TODO write
-	protected static final long EVENT_CHECK_INERVAL=1000L;
+	protected static final String ABOUT=NAME+"\nMade by Matt Spooner" +
+			"\nLast Modified:Dec 14, 2013\nDate Started:Sep 19, 2013" +
+			"\nAbout this project:\nSince the majority of programs I made up until this point were games," +
+			"\nI decided I wanted to create a utility. I decided to make an app that kept track of what I" +
+			"\nneeded to do and remind me about it. I had downloaded a todo app before, but it was too complex" +
+			"\nfor what I wanted it to be. So this project was one that I was motivated for, as it would be" +
+			"\nsomething I would use regularly. I am very happy with how it turned out and I use it to this day.";
 	//GUI
 	protected static final Font NAME_FONT=new Font(Font.SANS_SERIF, Font.BOLD, 25);
 	protected static final Font DESC_FONT=new Font(Font.SANS_SERIF, Font.ITALIC, 20);
