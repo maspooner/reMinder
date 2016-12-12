@@ -1,12 +1,13 @@
 package org.spooner.java.reMinder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
  * reMinder
  * Made by Matt Spooner
  * 
- * Last Modified:Oct 17, 2013
+ * Last Modified:Nov 7, 2013
  * Date Started:Sep 19, 2013
  * 
  * Programming Concepts Applied For the First Time:
@@ -32,7 +33,7 @@ import java.util.ArrayList;
  * get rid of shouldUpdate
  * sort events!
  */
-public class Minder {
+public abstract class Minder {
 	//static members
 	private static ArrayList<TimedEvent> events=new ArrayList<TimedEvent>();
 	private static MinderIO io;
@@ -77,17 +78,25 @@ public class Minder {
 	}
 	public static final int getEventSize(){return events.size();}
 	public static final ArrayList<TimedEvent> getEvents(){return events;}
+	public static final TimedEvent getEvent(int i){return events.get(i);}
 	public static final void setEvent(TimedEvent index, TimedEvent newValue){
 		events.set(events.indexOf(index), newValue);
 	}
 	public static final void addEvent(TimedEvent te){
 		events.add(te);
 	}
+	public static final void addEvent(int i, TimedEvent te){
+		events.add(i, te);
+	}
 	public static final void removeEvent(TimedEvent te){
 		events.remove(te);
 	}
-	
-	private static final boolean isGUIEnabled(String type) throws Exception{return Integer.parseInt(type)==0;}
+	public static final TimedEvent removeEvent(int i){
+		return events.remove(i);
+	}
+	public static final void swapEvents(int i, int j){
+		Collections.swap(events, i, j);
+	}
 	private static final void initEvents(TimedEvent[] readEvents){
 		for(TimedEvent te : readEvents){
 			events.add(te);

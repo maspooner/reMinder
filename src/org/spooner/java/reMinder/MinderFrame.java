@@ -84,6 +84,9 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 		if(actionCommand.equals("About")){
 			JOptionPane.showMessageDialog(this, MinderConstants.ABOUT, "About Minder "+MinderConstants.VERSION, JOptionPane.INFORMATION_MESSAGE);
 		}
+		else if(actionCommand.equals("Sort")){
+			new SortDialog();
+		}
 		else{
 			//else show one of the 3 dialogs
 			EventDialog ed;

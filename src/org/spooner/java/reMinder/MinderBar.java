@@ -35,6 +35,10 @@ public class MinderBar extends JMenuBar implements ActionListener{
 		menu.add(getNewMenuItem("Alarm..."));
 		menu.add(getNewMenuItem("Reminder..."));
 		add(menu);
+		//sort menu
+		menu=new JMenu("Sort");
+		menu.add(getNewMenuItem("Sort"));
+		add(menu);
 	}
 	
 	private JMenuItem getNewMenuItem(String name){
@@ -56,7 +60,7 @@ public class MinderBar extends JMenuBar implements ActionListener{
 			new OptionsDialog();
 		}
 		else{
-			//it's one of the add commands
+			//it's one of the add or sort commands
 			this.actionCommand=ac;
 		}
 	}

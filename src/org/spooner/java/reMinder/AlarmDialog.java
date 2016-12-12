@@ -61,7 +61,9 @@ public class AlarmDialog extends EventDialog{
 		String name, desc, message;
 		name=getNameField().getText();
 		desc=getDescField().getText();
+		if(desc.isEmpty()) desc="No desc.";
 		message=messageBox.getText();
+		if(message.isEmpty()) message="Event ended";
 		return new Alarm(name, desc, MinderTime.timeToMillis(endTimeBox.getText()),
 				isRepeatedBox.isSelected(), message);
 	}

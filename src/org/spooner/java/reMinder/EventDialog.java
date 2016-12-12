@@ -36,6 +36,7 @@ public abstract class EventDialog extends JDialog implements ActionListener{
 		
 		setTitle("New Event");
 		setModal(true);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setMinimumSize(MinderConstants.MIN_DIALOG_SIZE);
 		setPreferredSize(MinderConstants.PREFERED_DIALOG_SIZE);
 		setLayout(new GridBagLayout());

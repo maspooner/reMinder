@@ -79,7 +79,9 @@ public class ReminderDialog extends EventDialog{
 		String name, desc, message;
 		name=getNameField().getText();
 		desc=getDescField().getText();
+		if(desc.isEmpty()) desc="No desc.";
 		message=messageBox.getText();
+		if(message.isEmpty()) message="Event ended";
 		long interval=getInterval();
 		return new Reminder(name, desc, interval, System.currentTimeMillis()+interval, isRepeatedBox.isSelected(), message);
 	}
