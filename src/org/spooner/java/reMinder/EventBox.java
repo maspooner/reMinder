@@ -37,7 +37,7 @@ public abstract class EventBox extends JPanel implements MouseListener{
 	}
 	
 	//methods
-	private String getShortenedName(String name){return name.length()<=50 ? name :name.substring(0, 50)+"...";}//TODO adjust? this and bellow
+	private String getShortenedName(String name){return name.length()<=50 ? name :name.substring(0, 50)+"...";}
 	private String getShortenedDesc(String desc){return desc.length()<=50 ? desc :desc.substring(0, 50)+"...";}
 	public final JLabel getNameLabel(){return nameLabel;}
 	public final JLabel getDescLabel(){return descLabel;}

@@ -40,6 +40,7 @@ import java.util.Collections;
 public abstract class Minder {
 	//static members
 	private static ArrayList<TimedEvent> events=new ArrayList<TimedEvent>();
+	private static MinderFrame frame;
 	private static MinderIO io;
 	protected static volatile boolean shouldUpdate=false;
 	
@@ -74,11 +75,12 @@ public abstract class Minder {
 //			System.err.println("Invalid command line arguments!");
 //			System.exit(6);
 //		}
-		checkTime.start();
-		new MinderFrame();
+		frame=new MinderFrame();
 		io=new MinderIO();
 		TimedEvent[] readEvents=io.read();
 		initEvents(readEvents);
+		new MinderTray();
+		checkTime.start();
 	}
 	public static final int getEventSize(){return events.size();}
 	public static final ArrayList<TimedEvent> getEvents(){return events;}
@@ -113,5 +115,10 @@ public abstract class Minder {
 	}
 	public static final Image getImage(String fileName){
 		return io.readImage(fileName);
+	}
+	public static void toggleGUI() {
+		boolean enabled=true;
+		if(frame.isVisible()) enabled=false;
+		frame.setVisible(enabled);
 	}
 }

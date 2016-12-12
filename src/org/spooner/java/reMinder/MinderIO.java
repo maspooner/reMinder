@@ -167,7 +167,8 @@ public class MinderIO implements Runnable{
 	public final Image readImage(String fileName){
 		Image i=null;
 		try{
-			//FIXME change to new File(fileName) when editing
+			//FIXME change  when editing
+//			i=ImageIO.read(new File(fileName));
 			i=ImageIO.read(ClassLoader.class.getResourceAsStream("/"+fileName));
 		}
 		catch(Exception e){

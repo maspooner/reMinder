@@ -11,9 +11,9 @@ import javax.swing.border.EtchedBorder;
 public abstract class MinderConstants {
 	//contains all constants
 	//static members
-	protected static final String VERSION="v1.1.1";
-	protected static final String NAME="reminder "+VERSION;
-	protected static final String ABOUT="reMinder"+VERSION+"\nMade by Matt Spooner\nLast Modified:Nov 24, 2013\nDate Started:Sep 19, 2013";//TODO write
+	protected static final String VERSION="v1.2";
+	protected static final String NAME="reMinder "+VERSION;
+	protected static final String ABOUT=NAME+"\nMade by Matt Spooner\nLast Modified:Nov 24, 2013\nDate Started:Sep 19, 2013";//TODO write
 	protected static final long EVENT_CHECK_INERVAL=1000L;
 	//GUI
 	protected static final Font NAME_FONT=new Font(Font.SANS_SERIF, Font.BOLD, 25);

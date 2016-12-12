@@ -2,10 +2,7 @@ package org.spooner.java.reMinder;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Image;
-import java.awt.SystemTray;
 import java.awt.Toolkit;
-import java.awt.TrayIcon;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -19,8 +16,6 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 	private JPanel eventPanel;
 	private Thread updateUI;
 	private MinderBar menuBar;
-	private Image icon;
-	private TrayIcon trayIcon;
 	
 	//constructors
 	public MinderFrame(){
@@ -36,11 +31,9 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 		scrollPane=new JScrollPane();
 		eventPanel=new JPanel();
 		updateUI=new Thread(this);
-		icon=Minder.getImage("icon.png");
-		initTray();
 		//frame stuff
 		setTitle(MinderConstants.NAME);
-		setIconImage(icon);
+		setIconImage(Minder.getImage("icon.png"));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		addWindowListener(this);
 		setPreferredSize(MinderConstants.PREFERED_FRAME_SIZE);
@@ -65,18 +58,6 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 			addEvent(te);
 	}
 	
-	private final void initTray(){
-		trayIcon=new TrayIcon(icon, MinderConstants.NAME);
-		trayIcon.setImageAutoSize(true);
-		try{
-			SystemTray.getSystemTray().add(trayIcon);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-			System.exit(8);
-		}
-	}
-	
 	private final void addEvent(TimedEvent te){
 		if(te instanceof Todo){
 			eventPanel.add(new TodoBox((Todo) te));
@@ -93,8 +74,8 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 		String message="Event: "+name+" has ended.          Message:   "+text;
 		if(MinderOptions.doBeep)
 			Toolkit.getDefaultToolkit().beep();
-//		JOptionPane.showMessageDialog(this, message, "Event Done", JOptionPane.WARNING_MESSAGE, null);
-		trayIcon.displayMessage("Event Done", message, TrayIcon.MessageType.WARNING);
+//		JOptionPane.showMessageDialog(this, message, "Event Done", JOptionPane.WARNING_MESSAGE, null); TODO reimplement?
+		MinderTray.showMessage(message);
 	}
 	private void setJMenuBar(MinderBar mb) {
 		super.setJMenuBar(mb);
@@ -123,7 +104,6 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 	
 	@Override
 	public void run() {
-		// TODO
 		while(true){
 			//check for action command
 			if(menuBar.getActionCommand().length()!=0){
@@ -167,7 +147,7 @@ public class MinderFrame extends JFrame implements Runnable, WindowListener{
 	@Override
 	public void windowClosing(WindowEvent e) {
 		Minder.manualSave();
-		System.exit(0);//FIXME get rid of when implementing non-GUI mode
+		System.exit(0);
 	}
 	public void windowDeactivated(WindowEvent e) {}
 	public void windowDeiconified(WindowEvent e) {}
